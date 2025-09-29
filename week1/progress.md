@@ -1,1 +1,1 @@
-week 1: linux fundamentals completed
+week 1: Linux fundamentals completed
