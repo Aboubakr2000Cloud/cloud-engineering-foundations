@@ -9,12 +9,12 @@ The goal was to create a simple yet functional system information script that re
 ## Script Structure
 
 ```
-cloud-learning-project/
-├── configs/
-│ └── system.conf
+cloud-learning-project/     
+├── configs/                 
+│ └── system.conf           # Configuration file  
 └── scripts/
-  └── system_info.sh
-```
+  └── system_info.sh        # Main script
+``` 
   system_info.sh: The main bash script that prints system information.  
   system.conf: A configuration file that stores environment variables and user preferences.
 ## Script Explanation
