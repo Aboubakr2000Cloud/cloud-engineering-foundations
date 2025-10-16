@@ -8,9 +8,9 @@ This first project introduced the core principles of Linux scripting and automat
 The goal was to create a simple yet functional system information script that reads parameters from a configuration file and prints customized system details dynamically.
 ## Script Structure
 
-cloud-learning-project/
+cloud-learning-project/  
 ├── configs/  
-│ └── system.conf
+│ └── system.conf  
 └── scripts/  
   └── system_info.sh
 
