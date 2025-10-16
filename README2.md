@@ -1,1 +1,0 @@
-# cloud engineering learning journey
