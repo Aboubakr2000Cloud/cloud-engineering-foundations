@@ -62,12 +62,13 @@ disk space: Filesystem      Size  Used Avail Use% Mounted on
 
 **Solution:** Used variables (SHOW_DATE, SHOW_USER, SHOW_DISK) in the config file instead of hardcoding.  
 
-### Challenge 3: 
+### Challenge 4: 
 **Problem:** Debugging permission issues.
 
 **Solution:** Used "chmod +x" to make the script executable.  
 
-### Challenge 3: 
+### Challenge 5: 
 **Problem:** Ensuring clear output formatting.
 
 **Solution:** Added "echo" commands and clean output messages.
+
