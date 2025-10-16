@@ -1,10 +1,10 @@
 # Week 1: Linux Fundamentals
 ## Focus:
-Bash scripting basics
-Configuration file integration
+Bash scripting basics  
+Configuration file integration  
 System information commands
 ## Project Overview
-This first project introduced the core principles of Linux scripting and automation.
+This first project introduced the core principles of Linux scripting and automation.  
 The goal was to create a simple yet functional system information script that reads parameters from a configuration file and prints customized system details dynamically.
 ## Script Structure
 project/
