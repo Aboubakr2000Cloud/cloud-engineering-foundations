@@ -37,3 +37,12 @@ Depending on the configuration values, it conditionally displays system informat
 - Command substitution and variable handling
 - File permissions and script execution management (chmod +x)
 - Understanding standard Linux commands (date, whoami, df)
+## Sample Output
+```
+Welcome_to_my_system!
+current date: Thu Oct 16 03:08:27 AM +01 2025
+current user: abou
+disk space: Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda2        22G   12G  9.3G  56% /
+
+```
