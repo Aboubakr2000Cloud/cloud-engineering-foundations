@@ -5,7 +5,7 @@ Automated log analysis tool that parses server logs and generates comprehensive 
 
 ## Project Structure
 ```
-week2-project/
+week2/
 ├── server.log              # Sample log file
 ├── analyze_log.sh          # Main analysis script
 ├── report.txt              # Generated report
