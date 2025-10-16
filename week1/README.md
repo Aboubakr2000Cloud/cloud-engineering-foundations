@@ -8,7 +8,7 @@ This first project introduced the core principles of Linux scripting and automat
 The goal was to create a simple yet functional system information script that reads parameters from a configuration file and prints customized system details dynamically.
 ## Project Structure
 
-```
+```bash
 cloud-learning-project/     
 ├── configs/                 
 │ └── system.conf           # Configuration file  
@@ -31,6 +31,11 @@ Depending on the configuration values, it conditionally displays system informat
 - Make script executable: chmod +x scripts/bash/system_info.sh
 - Run the script: ./scripts/bash/system_info.sh
 - Modify settings to change output in: configs/system.conf
+## Quick Start:
+From repository root:
+```bash
+./scripts/bash/system_info.sh
+```
  ## Skills Demonstrated
 - Bash scripting fundamentals  
 - Using configuration files for modular scripts
@@ -38,7 +43,7 @@ Depending on the configuration values, it conditionally displays system informat
 - File permissions and script execution management (chmod +x)
 - Understanding standard Linux commands (date, whoami, df)
 ## Sample Output
-```
+```bash
 Welcome_to_my_system!
 current date: Thu Oct 16 03:08:27 AM +01 2025
 current user: abou
@@ -72,3 +77,6 @@ disk space: Filesystem      Size  Used Avail Use% Mounted on
 
 **Solution:** Added "echo" commands and clean output messages.
 
+## Learning Outcome
+This project built a strong foundation in automation and configuration management.  
+It showed how even a small script can adapt to user preferences, setting the stage for more advanced bash projects and system automation tasks in later weeks.
