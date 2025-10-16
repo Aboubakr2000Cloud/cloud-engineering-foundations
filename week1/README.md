@@ -15,10 +15,10 @@ cloud-learning-project/
 └── scripts/
   └── system_info.sh
 ```
-    system_info.sh: The main bash script that prints system information.  
-    system.conf: A configuration file that stores environment variables and user preferences.
+  system_info.sh: The main bash script that prints system information.  
+  system.conf: A configuration file that stores environment variables and user preferences.
 ## Script Explanation
-The script sources (source) the configuration file, dynamically loading variables defined there.
+The script sources (source) the configuration file, dynamically loading variables defined there.  
 Depending on the configuration values, it conditionally displays system information such as the current date, the active user, and disk space usage.
 
 ## How To Execute The Script:
