@@ -13,6 +13,13 @@ cloud-learning-project/
 │ └── system.conf  
 └── scripts/  
     └── system_info.sh  
+```
+project/
+├── configs/
+│ └── system.conf
+└── scripts/
+  └── system_info.sh
+```
   
     system_info.sh: The main bash script that prints system information.  
     system.conf: A configuration file that stores environment variables and user preferences.
