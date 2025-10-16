@@ -46,3 +46,28 @@ disk space: Filesystem      Size  Used Avail Use% Mounted on
 /dev/sda2        22G   12G  9.3G  56% /
 
 ```
+## Challenges & Solutions
+### Challenge 1: 
+**Problem:** Understanding what bash actually is and how it executes commands.
+
+**Solution:** Studied how shell interpreters work and practiced small commands manually before scripting.
+
+### Challenge 2: 
+**Problem:** Linking the script with an external config file.
+
+**Solution:** Learned to use the "source" command to import variables from another file.
+
+### Challenge 3: 
+**Problem:** Keeping the script flexible for repeated runs.
+
+**Solution:** Used variables (SHOW_DATE, SHOW_USER, SHOW_DISK) in the config file instead of hardcoding.  
+
+### Challenge 3: 
+**Problem:** Debugging permission issues.
+
+**Solution:** Used "chmod +x" to make the script executable.  
+
+### Challenge 3: 
+**Problem:** Ensuring clear output formatting.
+
+**Solution:** Added "echo" commands and clean output messages.
