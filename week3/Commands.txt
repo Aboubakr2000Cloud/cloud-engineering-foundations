@@ -1,0 +1,24 @@
+# Week 3 Network Commands Reference
+
+# Ping test
+ping -c 4 -q host
+
+# DNS lookup
+dig +short host
+
+# Traceroute
+traceroute -m 15 host
+
+# HTTP status check
+curl -I -s -o /dev/null -w "%{http_code}" url
+
+# Listening ports
+netstat -tuln
+ss -tuln
+
+# Port check
+nc -z -w2 host port
+
+# Script usage
+./netcheck.sh google.com
+./netcheck.sh google.com github.com amazon.com

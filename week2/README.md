@@ -5,11 +5,12 @@ Automated log analysis tool that parses server logs and generates comprehensive 
 
 ## Project Structure
 ```
-week2-project/
+week2/
 ├── server.log              # Sample log file
 ├── analyze_log.sh          # Main analysis script
 ├── report.txt              # Generated report
 ├── commands.txt            # Command reference
+├── Learnings.md            # Learning Notes
 └── README.md               # This file
 ```
 
@@ -108,6 +109,6 @@ These enhancements demonstrate understanding of production requirements and scal
 - **Script:** `../../scripts/bash/analyze_log.sh`
 - **Sample Log:** `../../logs/server.log`
 - **Sample Report:** `../../logs/report.txt`
-- **Commands Reference:** `commands.txt`
-- **Learning Notes:** `Learnings.md`
-
+- **Commands Reference:** `../../docs/week2/commands.txt`
+- **Learning Notes:** `../../docs/week2/Learnings.md`
+- **Project Readme:** `../../docs/week2/README.md`

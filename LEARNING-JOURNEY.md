@@ -38,4 +38,22 @@ Detailed documentation of my cloud engineering learning journey.
 
 ---
 
+## Week 3: Networking & SSH
+**Completion Date:** October 2025
+
+**What I Built:**
+- Network troubleshooting toolkit
+- Multi-host diagnostics automation
+- Professional report generation system
+
+**Key Learnings:**
+- Networking fundamentals (IPs, DNS, TCP/UDP, HTTP/HTTPS)
+- Network diagnostic commands (ping, traceroute, dig, curl, netstat)
+- SSH configuration and security hardening
+- Error handling and timeout management
+- Production-quality bash scripting
+
+[Full Week 3 Documentation →](week3/)
+
+
 *This documentation tracks my progress from fundamentals to advanced cloud engineering skills.*
