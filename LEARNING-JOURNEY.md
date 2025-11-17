@@ -55,5 +55,25 @@ Detailed documentation of my cloud engineering learning journey.
 
 [Full Week 3 Documentation →](week3/)
 
+---
+
+## Week 4: Bash Scripting & Crontab
+**Completion Date:** November 2025
+
+**What I Built:**
+- Production-ready website health monitoring system
+- Automated health checks with configurable thresholds
+- Daily summary reports with statistical analysis
+- Multi-command CLI interface (check/report/status/help)
+
+**Key Learnings:**
+- Advanced bash scripting (functions, case statements, control flow)
+- Text processing pipeline mastery (grep, awk, sed, cut, sort)
+- Cron job scheduling and automation
+- Log management and data analysis
+- HTTP monitoring with curl and response time tracking
+- Statistical calculations from raw logs
+
+[Full Week 4 Documentation →](week4/)
 
 *This documentation tracks my progress from fundamentals to advanced cloud engineering skills.*

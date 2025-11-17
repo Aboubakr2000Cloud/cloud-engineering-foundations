@@ -1,0 +1,176 @@
+# Week 4: Bash Scripting & Crontab - Command Reference
+
+## Health Checking with curl
+# Get HTTP status code
+curl -I -s -o /dev/null -w "%{http_code}" https://example.com
+
+# Get response time in seconds
+curl -o /dev/null -s -w "%{time_total}" https://example.com
+
+# Get both status and time in one request
+curl -I -s -o /dev/null -w "%{http_code},%{time_total}" --max-time 10 https://example.com
+
+## Text Processing Pipeline
+
+# Filter today's logs
+grep "$(date +%F)" logs/health.log
+
+# Count occurrences
+grep -c "SUCCESS" logs/health.log
+
+# Extended regex (OR logic)
+grep -E "SLOW|FAILED|Unreachable" logs/health.log
+
+# Invert match (exclude pattern)
+grep -v "Unreachable" logs/health.log
+
+# Extract only matching text
+grep -o '[0-9]\+ms' logs/health.log
+
+# Extract specific column with awk
+awk '{print $3}' file
+
+# Calculate average with awk
+awk '{sum += $1; count++} END {print int(sum/count)}' file
+
+# Remove text with sed
+sed 's/ms//' file
+
+# Strip ANSI color codes
+sed 's/\x1b\[[0-9;]*m//g' file
+
+# Cut by delimiter
+cut -d',' -f1 file
+
+# Sort numerically, reverse order
+sort -rn file
+
+# Sort by specific column
+sort -k1 -rn file
+
+# Unique values only
+sort -u file
+
+## File Operations
+
+# Read CSV line by line
+while IFS=',' read -r col1 col2 col3; do
+    echo "$col1"
+done < file.csv
+
+# Overwrite file
+echo "content" > file
+
+# Append to file
+echo "content" >> file
+
+# Block redirection
+{
+    echo "line 1"
+    echo "line 2"
+} > output_file
+
+# Watch file in real-time
+tail -f logs/health.log
+
+# Show last N lines
+tail -n 10 logs/health.log
+
+# Show first N lines
+head -n 10 logs/health.log
+
+# Count lines
+wc -l logs/health.log
+
+## Date & Time
+
+# Format: YYYY-MM-DD
+date +%F
+
+# Format: YYYY-MM-DD HH:MM:SS
+date '+%F %H:%M:%S'
+
+# Unix timestamp
+date +%s
+
+# Use in filenames
+echo "report_$(date +%F).txt"
+
+## Cron Management
+
+# Edit crontab
+crontab -e
+
+# List current cron jobs
+crontab -l
+
+# Remove all cron jobs
+crontab -r
+
+# Check cron execution logs
+grep CRON /var/log/syslog
+
+## Cron Syntax Examples
+
+# Every 5 minutes
+*/5 * * * * /path/to/script.sh
+
+# Every hour
+0 * * * * /path/to/script.sh
+
+# Daily at midnight
+0 0 * * * /path/to/script.sh
+
+# Every minute (testing only)
+* * * * * /path/to/script.sh
+
+# With directory change
+*/5 * * * * cd /path/to/dir && ./script.sh
+
+# With output logging
+* * * * * /path/to/script.sh >> /tmp/output.log 2>&1
+
+## Bash Arithmetic
+
+# Basic math
+RESULT=$((5 + 3))
+RESULT=$((10 * 100 / 3))
+
+# Calculate percentage
+SUCCESS_RATE=$((SUCCESS * 100 / TOTAL))
+
+## Script Permissions
+
+# Make executable
+chmod +x script.sh
+
+# Check permissions
+ls -l script.sh
+
+## Case Statement Example
+case "$1" in
+    check)
+        run_checks
+        ;;
+    report)
+        generate_report
+        ;;
+    *)
+        echo "Usage: $0 {check|report|status}"
+        exit 1
+        ;;
+esac
+
+## Testing & Debugging
+
+# Test command manually
+/full/path/to/script.sh check
+
+# Run from different directory
+cd /tmp && /full/path/to/script.sh
+
+# Check script syntax without running
+bash -n script.sh
+
+# Run with debug output
+bash -x script.sh

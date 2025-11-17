@@ -4,12 +4,14 @@
 Automated network diagnostics script that checks connectivity, DNS resolution, routing, web access, and port status for any host.
 
 ## Project Structure
+```bash
 week3/
 ├── netcheck.sh             # Main diagnostics script 
 ├── network_report.txt      # Generated report
 ├── commands.txt            # Command reference
 ├── Learnings.md            # Learning Notes
 └── README.md               # This file
+```
 
 ## Features
 - Multi-host support
