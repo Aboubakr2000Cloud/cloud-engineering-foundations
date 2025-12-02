@@ -76,4 +76,23 @@ Detailed documentation of my cloud engineering learning journey.
 
 [Full Week 4 Documentation →](week4/)
 
+## Week 5: Python Fundamentals
+**Completion Date:** November 2025
+
+**What I Built:**
+- Feature-rich CLI calculator with 12+ mathematical operations
+- Memory system for chained calculations
+- Calculation history with persistent storage
+- Interactive menu-driven interface with error handling
+
+**Key Learnings:**
+- Python fundamentals (variables, functions, control flow, loops)
+- List operations and list comprehensions
+- Exception handling (try/except) for robust applications
+- File I/O for data persistence
+- Working with standard library modules (math)
+- Input validation and user experience design
+
+[Full Week 5 Documentation →](week5/)
+
 *This documentation tracks my progress from fundamentals to advanced cloud engineering skills.*
