@@ -154,8 +154,6 @@ else:
 
 - Down below a series of practical Python mini-projects for the week6 of Python Data Structures & File I/O, and it documents the challenges I faced, and how I solved them and some key concepts learned. The goal was to move from basic scripting to a **clean, professional CLI tool** minds.
   
----
-
 ### Mini-project 1: File Iteration & Duplicate Detection
 
 #### 🔹 New Concepts Learned
@@ -182,8 +180,6 @@ Key idea:
 ```python
 files_dict.setdefault(filename, []).append(file)
 ```
-
----
 
 ### Mini-project 2: File Size Comparison with Flags
 
@@ -212,8 +208,6 @@ else:
     key = filename
 ```
 
----
-
 ### Mini-project 3: Backup Script (Copy + Compress)
 
 #### 🔹 New Concepts Learned
@@ -239,8 +233,6 @@ Key idea:
 if target_path.exists():
     counter += 1
 ```
-
----
 
 ### Mini-project 4: Cleaner Script (Delete by Days / Size)
 
@@ -272,15 +264,11 @@ else:
     file.unlink()
 ```
 
----
-
 ### Final Project: Smart File Organizer 🗂️
 
 #### 🎯 Project Goal
 
 Automatically organize files into category folders with a professional CLI.
-
----
 
 #### 🔹 Core Concepts Mastered
 
@@ -291,8 +279,6 @@ Automatically organize files into category folders with a professional CLI.
 * Statistics tracking
 * Error handling
 * Duplicate filename resolution
-
----
 
 #### ⚠️ Key Challenges & Solutions
 
@@ -309,8 +295,6 @@ def get_category(file):
             return cat
     return "Others"
 ```
-
----
 
 ##### 2️⃣ Dry-Run Logic
 
@@ -337,8 +321,6 @@ else:
 file_1.txt, file_2.txt, ...
 ```
 
----
-
 ####" 4️⃣ Statistics Tracking
 
 **Learned:**
@@ -349,8 +331,6 @@ file_1.txt, file_2.txt, ...
 ```python
 Stats[category].append(file.name)
 ```
-
----
 
 ##### 5️⃣ Scope & Return Values
 
@@ -364,8 +344,6 @@ Stats[category].append(file.name)
 return Stats, total_processed, skipped, errors
 ```
 
----
-
 #### 🧠 Engineering Mindset Gained
 
 * Separation of concerns
@@ -374,16 +352,12 @@ return Stats, total_processed, skipped, errors
 * CLI-first thinking
 * Readability > cleverness
 
----
-
 ### 🚀 Final Outcome
 
 ✅ Professional CLI tool
 ✅ Safe file operations
 ✅ Clean logic
 ✅ Industry practices
-
----
 
 **Technical highlights:**
 - Dictionary-based category system
