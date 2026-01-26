@@ -311,7 +311,7 @@ else:
 
 ---
 
-####" 3️⃣ Duplicate Filename Handling
+##### 3️⃣ Duplicate Filename Handling
 
 **Problem:** Files overwriting each other
 
@@ -321,7 +321,7 @@ else:
 file_1.txt, file_2.txt, ...
 ```
 
-####" 4️⃣ Statistics Tracking
+##### 4️⃣ Statistics Tracking
 
 **Learned:**
 
