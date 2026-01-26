@@ -95,4 +95,23 @@ Detailed documentation of my cloud engineering learning journey.
 
 [Full Week 5 Documentation →](week5/)
 
+## Week 6: Python Data Structures & File I/O
+**Completion Date:** November 2025
+
+**What I Built:**
+- Smart file organizer with automatic categorization
+- CLI tool with dry-run mode and statistics tracking
+- Intelligent duplicate file handling with auto-renaming
+- Cross-platform path operations using pathlib
+
+**Key Learnings:**
+- Python data structures (dictionaries, tuples, sets)
+- File I/O operations (text, CSV, JSON)
+- OS and path operations (os module, pathlib)
+- Command-line argument parsing with argparse
+- Error handling and graceful degradation
+- Statistics tracking and user feedback patterns
+
+[Full Week 6 Documentation →](week6/)
+
 *This documentation tracks my progress from fundamentals to advanced cloud engineering skills.*
