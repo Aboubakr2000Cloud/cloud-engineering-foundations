@@ -152,25 +152,26 @@ else:
 
 ## Learning through mini-projects
 
-Down below a series of practical Python mini-projects for the week6 of Python Data Structures & File I/O, and it documents the challenges I faced, and how I solved them and some key concepts learned. The goal was to move from basic scripting to a **clean, professional CLI tool** minds.
+- Down below a series of practical Python mini-projects for the week6 of Python Data Structures & File I/O, and it documents the challenges I faced, and how I solved them and some key concepts learned. The goal was to move from basic scripting to a **clean, professional CLI tool** minds.
+  
 ---
 
-## Mini-project 1: File Iteration & Duplicate Detection
+### Mini-project 1: File Iteration & Duplicate Detection
 
-### 🔹 New Concepts Learned
+#### 🔹 New Concepts Learned
 
 * `pathlib.Path` and why it’s better than raw strings
 * Recursive file traversal with `rglob("*")`
 * Using dictionaries to group related data
 * Understanding **keys vs values** in dictionaries
 
-### ⚠️ Challenges Faced
+#### ⚠️ Challenges Faced
 
 * Script wasn’t detecting duplicates even though files existed
 * Confusion between filenames vs full paths
 * Printing duplicates inside the loop (wrong place)
 
-### ✅ Final Solution
+#### ✅ Final Solution
 
 * Use filename (or size) as dictionary key
 * Store **list of paths** as value
@@ -184,20 +185,20 @@ files_dict.setdefault(filename, []).append(file)
 
 ---
 
-## Mini-project 2: File Size Comparison with Flags
+### Mini-project 2: File Size Comparison with Flags
 
-### 🔹 New Concepts Learned
+#### 🔹 New Concepts Learned
 
 * `argparse` flags with `action="store_true"`
 * Switching behavior using CLI flags (`--size-mode`)
 * File metadata using `file.stat().st_size`
 
-### ⚠️ Challenges Faced
+#### ⚠️ Challenges Faced
 
 * `--size_mode` not working
 * Logic executed but output was empty
 
-### ✅ Final Solution
+#### ✅ Final Solution
 
 * Correct flag definition
 * Use `args.size_mode` inside logic
@@ -213,21 +214,21 @@ else:
 
 ---
 
-## Mini-project 3: Backup Script (Copy + Compress)
+### Mini-project 3: Backup Script (Copy + Compress)
 
-### 🔹 New Concepts Learned
+#### 🔹 New Concepts Learned
 
 * Creating directories safely with `mkdir(parents=True, exist_ok=True)`
 * Copying files using `shutil.copy`
 * ZIP creation with `shutil.make_archive`
 * Absolute vs relative paths
 
-### ⚠️ Challenges Faced
+#### ⚠️ Challenges Faced
 
 * Destination folder created but empty
 * Files silently overwriting each other
 
-### ✅ Final Solution
+#### ✅ Final Solution
 
 * Use absolute paths
 * Prevent overwriting by renaming duplicates
@@ -241,22 +242,22 @@ if target_path.exists():
 
 ---
 
-## Mini-project 4: Cleaner Script (Delete by Days / Size)
+### Mini-project 4: Cleaner Script (Delete by Days / Size)
 
-### 🔹 New Concepts Learned
+#### 🔹 New Concepts Learned
 
 * File timestamps (`st_mtime`)
 * `datetime.timedelta`
 * Optional CLI arguments
 * Industry-standard `--dry-run`
 
-### ⚠️ Challenges Faced
+#### ⚠️ Challenges Faced
 
 * Misunderstanding dry-run purpose
 * Optional arguments logic
 * Confirmation before deletion
 
-### ✅ Final Solution
+#### ✅ Final Solution
 
 * Dry-run only prints actions
 * Confirmation via `input()`
@@ -273,15 +274,15 @@ else:
 
 ---
 
-## Final Project: Smart File Organizer 🗂️
+### Final Project: Smart File Organizer 🗂️
 
-### 🎯 Project Goal
+#### 🎯 Project Goal
 
 Automatically organize files into category folders with a professional CLI.
 
 ---
 
-### 🔹 Core Concepts Mastered
+#### 🔹 Core Concepts Mastered
 
 * CLI design with `argparse`
 * Clean project structure
@@ -293,9 +294,9 @@ Automatically organize files into category folders with a professional CLI.
 
 ---
 
-### ⚠️ Key Challenges & Solutions
+#### ⚠️ Key Challenges & Solutions
 
-#### 1️⃣ Category Detection
+##### 1️⃣ Category Detection
 
 **Problem:** Mapping extensions to folders
 
@@ -311,7 +312,7 @@ def get_category(file):
 
 ---
 
-#### 2️⃣ Dry-Run Logic
+##### 2️⃣ Dry-Run Logic
 
 **Problem:** Avoid moving files while still showing actions
 
@@ -326,7 +327,7 @@ else:
 
 ---
 
-#### 3️⃣ Duplicate Filename Handling
+####" 3️⃣ Duplicate Filename Handling
 
 **Problem:** Files overwriting each other
 
@@ -338,7 +339,7 @@ file_1.txt, file_2.txt, ...
 
 ---
 
-#### 4️⃣ Statistics Tracking
+####" 4️⃣ Statistics Tracking
 
 **Learned:**
 
@@ -351,7 +352,7 @@ Stats[category].append(file.name)
 
 ---
 
-#### 5️⃣ Scope & Return Values
+##### 5️⃣ Scope & Return Values
 
 **Big Concept Learned:**
 
@@ -365,7 +366,7 @@ return Stats, total_processed, skipped, errors
 
 ---
 
-### 🧠 Engineering Mindset Gained
+#### 🧠 Engineering Mindset Gained
 
 * Separation of concerns
 * Defensive programming
@@ -375,7 +376,7 @@ return Stats, total_processed, skipped, errors
 
 ---
 
-## 🚀 Final Outcome
+### 🚀 Final Outcome
 
 ✅ Professional CLI tool
 ✅ Safe file operations
