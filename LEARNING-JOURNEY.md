@@ -114,4 +114,25 @@ Detailed documentation of my cloud engineering learning journey.
 
 [Full Week 6 Documentation →](week6/)
 
+## Week 7: Python for Automation & APIs
+**Completion Date**: February 2025
+
+**What I Built:**
+
+- Weather data fetcher CLI with OpenWeatherMap API integration
+- Intelligent retry system with exponential backoff and global failure detection
+- Professional logging (console + file) with error classification
+- Command-line tool with flexible parameter selection and dry-run mode
+
+**Key Learnings:**
+
+- HTTP requests and RESTful API integration using requests library
+- Production-ready logging with appropriate levels and dual output
+- Retry logic with exponential backoff for network resilience
+- Error classification strategies (retryable vs non-retryable errors)
+- Environment variable management and security best practices
+- Command-line argument parsing with argparse
+
+[Full Week 7 Documentation →](week7/)
+
 *This documentation tracks my progress from fundamentals to advanced cloud engineering skills.*
