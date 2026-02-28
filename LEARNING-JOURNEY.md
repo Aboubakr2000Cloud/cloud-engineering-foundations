@@ -135,4 +135,25 @@ Detailed documentation of my cloud engineering learning journey.
 
 [Full Week 7 Documentation →](week7/)
 
+## Week 8: Automation & Integrations
+**Completion Date**: February 2025
+
+**What I Built:**
+
+- Automated backup system with compression and intelligent rotation
+- SHA256 checksum validation for backup integrity
+- JSON manifest system for backup metadata tracking
+- Professional CLI tool with dry-run mode and config overrides
+
+**Key Learnings:**
+
+- Running shell commands from Python using subprocess
+- File compression and archiving with tar.gz
+- Backup rotation logic with time-based and count-based rules
+- Production-ready error handling and fault tolerance patterns
+- CLI design with argparse (overrides and dry-run mode)
+- Configuration validation and fail-fast principles
+
+[Full Week 8 Documentation →](week8/)
+
 *This documentation tracks my progress from fundamentals to advanced cloud engineering skills.*
