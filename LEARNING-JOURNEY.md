@@ -76,6 +76,8 @@ Detailed documentation of my cloud engineering learning journey.
 
 [Full Week 4 Documentation →](week4/)
 
+---
+
 ## Week 5: Python Fundamentals
 **Completion Date:** November 2025
 
@@ -95,6 +97,8 @@ Detailed documentation of my cloud engineering learning journey.
 
 [Full Week 5 Documentation →](week5/)
 
+---
+
 ## Week 6: Python Data Structures & File I/O
 **Completion Date:** November 2025
 
@@ -113,6 +117,8 @@ Detailed documentation of my cloud engineering learning journey.
 - Statistics tracking and user feedback patterns
 
 [Full Week 6 Documentation →](week6/)
+
+---
 
 ## Week 7: Python for Automation & APIs
 **Completion Date**: February 2025
@@ -134,6 +140,8 @@ Detailed documentation of my cloud engineering learning journey.
 - Command-line argument parsing with argparse
 
 [Full Week 7 Documentation →](week7/)
+
+---
 
 ## Week 8: Automation & Integrations
 **Completion Date**: February 2025
