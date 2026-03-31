@@ -152,6 +152,7 @@ Detailed documentation of my cloud engineering learning journey.
 - SHA256 checksum validation for backup integrity
 - JSON manifest system for backup metadata tracking
 - Professional CLI tool with dry-run mode and config overrides
+- Cloud backup integration with S3 upload and verification
 
 **Key Learnings:**
 
@@ -161,6 +162,7 @@ Detailed documentation of my cloud engineering learning journey.
 - Production-ready error handling and fault tolerance patterns
 - CLI design with argparse (overrides and dry-run mode)
 - Configuration validation and fail-fast principles
+- AWS S3 integration with boto3 and data integrity verification
 
 [Full Week 8 Documentation →](week8/)
 
