@@ -2,13 +2,14 @@
 
 ## Overview
 
-This week focused on Python-shell integration and building production-ready automation systems. The project demonstrates automated backup workflows with compression, validation, intelligent rotation, and comprehensive error handling.
+This week focused on Python-shell integration and building production-ready automation systems. The project demonstrates automated backup workflows with compression, validation, intelligent rotation, upload to S3 and comprehensive error handling.
 
 **Key Learning Areas:**
 - Running shell commands from Python using `subprocess`
 - File compression with tar/gzip
 - Backup validation with SHA256 checksums
 - Intelligent backup rotation strategies
+- Upload to S3
 - Environment variable management
 - CLI tool development with argparse
 - Production-ready logging and error handling
@@ -17,7 +18,7 @@ This week focused on Python-shell integration and building production-ready auto
 
 ## Project: Automated Backup & Rotation System
 
-A professional command-line backup automation tool that compresses directories, validates archives, manages backup retention, and provides detailed logging. Built with reliability and maintainability in mind.
+A professional command-line backup automation tool that compresses directories, validates archives, manages backup retention, uploads to S3 and provides detailed logging. Built with reliability and maintainability in mind.
 
 ### Project Structure
 
@@ -55,6 +56,12 @@ week8-backup-automation/
 ✅ **Comprehensive Logging** - Dual output (file + console) with timestamps  
 ✅ **Error Resilience** - Continue processing on single source failure  
 ✅ **Detailed Summary** - Statistics on success/failure/deletions
+✅ **S3 Cloud Upload** - Upload backups to AWS S3 with verification  
+✅ **Dual Retention** - Separate policies for local and S3 storage  
+✅ **Date-Organized S3 Storage** - Backups organized by year/month/day  
+✅ **Upload Verification** - SHA256 checksum validation after upload  
+✅ **Optional Local Cleanup** - Delete local files after verified S3 upload  
+✅ **S3 Rotation** - Automatic cleanup of old cloud backups
 
 ---
 
@@ -96,6 +103,11 @@ BACKUP_SOURCES=/path/to/folder1,/path/to/folder2,/path/to/folder3
 BACKUP_DESTINATION=/path/to/backups
 RETENTION_DAYS=7
 MIN_BACKUPS_TO_KEEP=3
+S3_BACKUP_BUCKET=my-bucket
+S3_PREFIX=backups/
+UPLOAD_TO_S3=false
+DELETE_LOCAL_AFTER_UPLOAD=false
+S3_RETENTION_DAYS=30
 LOG_LEVEL=INFO
 ```
 
@@ -107,6 +119,11 @@ LOG_LEVEL=INFO
 | `BACKUP_DESTINATION` | Where to save archives | `/home/user/backups` |
 | `RETENTION_DAYS` | Delete backups older than N days | `7` |
 | `MIN_BACKUPS_TO_KEEP` | Minimum backups to retain (even if old) | `3` |
+| `S3_BACKUP_BUCKET` | S3 bucket | `My bucket` |
+| `S3_PREFIX` | S3 prefix | `backups/` |
+| `UPLOAD_TO_S3` | Action to upload to S3 | `true / false` |
+| `DELETE_LOCAL_AFTER_UPLOAD` | Action to delete local file after being uploaded | `true / false` |
+| `S3_RETENTION_DAYS` | Delete S3 backups older than N days | `30` |
 | `LOG_LEVEL` | Logging verbosity | `INFO` |
 
 5. **Create required directories**
@@ -118,7 +135,7 @@ mkdir -p logs backups
 
 ## Usage
 
-### Basic Backup
+### Basic backup
 
 Run with default settings from `.env`:
 
@@ -184,11 +201,97 @@ python backup.py --dry-run
 2025-02-08 14:35:02 - INFO - Would delete: 2 old backups
 ```
 
+### S3 Upload
+
+**Enable S3 upload:**
+```bash
+python backup.py --upload
+```
+
+**Disable S3 upload:**
+```bash
+python backup.py --no-upload
+```
+
+**Upload and delete local after verification:**
+```bash
+python backup.py --upload --delete-local
+```
+
+**Configuration (.env):**
+```
+UPLOAD_TO_S3=true
+S3_BACKUP_BUCKET=my-abou-backup-bucket
+S3_PREFIX=backups/
+S3_RETENTION_DAYS=30
+DELETE_LOCAL_AFTER_UPLOAD=false
+```
+
 **View help:**
 ```bash
 python backup.py --help
 ```
 
+**Backup with upload Output:**
+
+```
+2026-03-31 16:16:02,796 - INFO - Starting backup process
+2026-03-31 16:16:02,804 - INFO - Configuration loaded successfully
+2026-03-31 16:16:02,804 - INFO - S3 upload is ENABLED
+2026-03-31 16:16:02,863 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2026-03-31 16:16:04,482 - INFO - Bucket 'my-abou-backups-bucket' is accessible
+2026-03-31 16:16:04,483 - INFO - Compressing /home/abou/S3_folder
+2026-03-31 16:16:04,607 - INFO - Backup created /home/abou/backups/S3_folder_20260331_161602.tar.gz
+2026-03-31 16:16:04,610 - INFO - Archive size: 0.00 MB
+2026-03-31 16:16:04,611 - INFO - Checksum: 9306a3843672dba3df3e2ebcc3da4381cb00af1a35d68e2a0f1ef3ddfc0827b1
+2026-03-31 16:16:04,612 - INFO - Manifest created: /home/abou/backups/S3_folder_20260331_161602.json
+2026-03-31 16:16:05,381 - INFO - Uploaded backups/2026/03/31/S3_folder_20260331_161602.tar.gz
+2026-03-31 16:16:05,493 - INFO - Uploaded file matches local checksum!
+2026-03-31 16:16:05,493 - INFO - Compressing /home/abou/cloud-learning-project/scripts/python
+2026-03-31 16:16:05,667 - INFO - Backup created /home/abou/backups/python_20260331_161602.tar.gz
+2026-03-31 16:16:05,669 - INFO - Archive size: 0.01 MB
+2026-03-31 16:16:05,670 - INFO - Checksum: d0207586e01c9b3979b5b8fa017b561110dbfe9fd9f666d504dbcffe2bb80153
+2026-03-31 16:16:05,673 - INFO - Manifest created: /home/abou/backups/python_20260331_161602.json
+2026-03-31 16:16:06,640 - INFO - Uploaded backups/2026/03/31/python_20260331_161602.tar.gz
+2026-03-31 16:16:06,733 - INFO - Uploaded file matches local checksum!
+2026-03-31 16:16:06,821 - INFO - Starting S3 backup cleanup...
+2026-03-31 16:16:07,502 - INFO - === Backup Summary ===
+2026-03-31 16:16:07,503 - INFO - Total sources: 2
+2026-03-31 16:16:07,504 - INFO - Successful: 2
+2026-03-31 16:16:07,504 - INFO - Failed: 0
+2026-03-31 16:16:07,504 - INFO - Old local backups deleted: 0
+2026-03-31 16:16:07,504 - INFO - Old s3 backups deleted: 0
+2026-03-31 16:16:07,504 - INFO - Failed local deletions: 0
+2026-03-31 16:16:07,504 - INFO - Failed s3 deletions: 0
+2026-03-31 16:16:07,504 - INFO - Total backup size: 0.01 MB
+```
+
+**Dry-run with upload simulation output :**
+
+```
+2026-03-31 16:26:51,014 - INFO - Starting backup process
+2026-03-31 16:26:51,014 - INFO - Configuration loaded successfully
+2026-03-31 16:26:51,015 - INFO - S3 upload is ENABLED
+2026-03-31 16:26:51,015 - INFO - [DRY-RUN MODE] No files will be created or deleted
+2026-03-31 16:26:51,015 - INFO - Backup sources: [PosixPath('/home/abou/S3_folder'), PosixPath('/home/abou/cloud-learning-project/scripts/python')]
+2026-03-31 16:26:51,015 - INFO - Destination: /home/abou/backups
+2026-03-31 16:26:51,015 - INFO - Retention: 6 days
+2026-03-31 16:26:51,015 - INFO - [DRY-RUN] Would compress /home/abou/S3_folder
+2026-03-31 16:26:51,016 - INFO - [DRY-RUN] Would create: /home/abou/backups/S3_folder_20260331_162651.tar.gz
+2026-03-31 16:26:51,016 - INFO - [DRY-RUN] Would create manifest: S3_folder_20260331_162651.json
+2026-03-31 16:26:51,016 - INFO - [DRY-RUN] Would upload S3_folder_20260331_162651.tar.gz to my-abou-backups-bucket S3 bucket: backups/2026/03/31/S3_folder_20260331_162651.tar.gz
+2026-03-31 16:26:51,016 - INFO - [DRY-RUN] Would compress /home/abou/cloud-learning-project/scripts/python
+2026-03-31 16:26:51,016 - INFO - [DRY-RUN] Would create: /home/abou/backups/python_20260331_162651.tar.gz
+2026-03-31 16:26:51,016 - INFO - [DRY-RUN] Would create manifest: python_20260331_162651.json
+2026-03-31 16:26:51,016 - INFO - [DRY-RUN] Would upload python_20260331_162651.tar.gz to my-abou-backups-bucket S3 bucket: backups/2026/03/31/python_20260331_162651.tar.gz
+2026-03-31 16:26:51,016 - INFO - [DRY-RUN] Would perform S3 cleanup (skipped, no AWS calls)
+2026-03-31 16:26:51,022 - INFO - [DRY-RUN] Found 0 old local backups that would be deleted:
+2026-03-31 16:26:51,023 - INFO - === [DRY-RUN] Backup Summary ===
+2026-03-31 16:26:51,023 - INFO - Total sources: 2
+2026-03-31 16:26:51,023 - INFO - Would create: 2 backups
+2026-03-31 16:26:51,023 - INFO - Would delete: 0 old local backups
+
+```
 ---
 
 ## How It Works
@@ -229,7 +332,22 @@ python backup.py --help
 }
 ```
 
-### 5. Backup Rotation
+### 5. Uploads to S3 (Optional)
+- If enabled, uploads verified backups to S3
+
+### 6. Verifies S3 Upload
+- Checks uploaded file matches local checksum
+
+### 7. Organizes S3 Backups
+- Stores in date-based structure (2025/02/10/)
+
+### 8. Cleans S3 Backups
+- Deletes S3 backups older than S3_RETENTION_DAYS
+
+### 9. Optional Local Cleanup
+- Deletes local copy after verified S3 upload
+  
+### 10. local backup Rotation
 - Lists all `.tar.gz` files in destination
 - Parses timestamps from filenames
 - Identifies backups older than `RETENTION_DAYS`
@@ -245,11 +363,14 @@ python backup.py --help
 # Scenario 3: All 10 are old → deletes 7 (keeps 3)
 ```
 
-### 6. Summary Report
+### 11. Summary Report
 - Total sources processed
 - Successful backups
 - Failed backups
-- Old backups deleted
+- Old local backups deleted
+- Old S3 backups deleted
+- Failed local deletions
+- Failed S3 deletions
 - Total backup size created
 
 ---
@@ -317,6 +438,10 @@ Persistent log of all operations with timestamps.
 ✅ **Production Logging** - Dual output with appropriate log levels  
 ✅ **Error Handling** - Graceful degradation on failures  
 ✅ **Type Hints** - Modern Python type annotations  
+✅ **boto3 S3 Operations** - Upload, list, delete, metadata  
+✅ **AWS Error Handling** - ClientError classification and retry logic  
+✅ **Data Integrity** - Checksum storage and verification  
+✅ **Cloud Storage Patterns** - Date-based organization, dual retention
 
 ---
 
@@ -361,6 +486,36 @@ else:
 ```
 
 Industry-standard pattern for safe testing of destructive operations.
+
+### 5. S3 Integration with Verification
+```python
+# Upload with checksum in metadata
+s3.upload_file(
+    str(archive),
+    bucket,
+    s3_key,
+    ExtraArgs={"Metadata": {"sha256": checksum}}
+)
+
+# Verify upload
+head = s3.head_object(Bucket=bucket, Key=s3_key)
+if checksum == head["Metadata"]["sha256"]:
+    # Upload verified!
+```
+Stores checksum in S3 metadata for integrity verification.
+
+### 6. Date-Organized S3 Structure
+```python
+def build_s3_key(prefix, archive, dt):
+    date_path = f"{dt.year}/{dt.month:02d}/{dt.day:02d}/"
+    return f"{prefix}{date_path}{archive.name}"
+```
+Production pattern: backups/2025/02/10/backup_143022.tar.gz
+
+### 7. Dual Rotation Logic
+- Local rotation: Based on file creation timestamp
+- S3 rotation: Based on LastModified attribute
+- Different retention policies for local vs cloud
 
 ---
 
@@ -435,11 +590,8 @@ python backup.py --retention-days 1
 
 Potential additions for learning or production use:
 
-- [ ] **S3 Upload Integration** (Week 10+ with AWS credentials)
 - [ ] **Email Notifications** on success/failure
 - [ ] **Compression Level Selection** (speed vs size tradeoff)
-- [ ] **Incremental Backups** (only changed files)
-- [ ] **Backup Verification** (test extraction)
 - [ ] **Parallel Compression** (multiple sources simultaneously)
 - [ ] **Database Backup Support** (MySQL, PostgreSQL dumps)
 - [ ] **Backup Encryption** (GPG encryption)
@@ -474,6 +626,7 @@ No other external dependencies required! Uses Python standard library:
 - `json` - Manifest serialization
 - `pathlib` - Path operations
 - `argparse` - CLI parsing
+- `boto3` - S3 operations
 
 ---
 
