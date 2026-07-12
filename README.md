@@ -95,4 +95,31 @@
 
 ---
 
+## AWS-Portfolio-Hosting-Backup-Automation
+
+**What I Built:**
+* Professional static portfolio website hosted on Amazon S3
+* Intelligent deployment system with checksum-based uploads
+* Automated backup solution with optional cloud synchronization
+* General-purpose S3 synchronization utility with diff-based uploads
+* Production-ready automation scripts with logging and retry mechanisms
+* Secure AWS integration using IAM and boto3
+
+**Key Learnings:**
+* AWS account setup and security best practices
+* IAM users, policies, and least-privilege access design
+* Amazon S3 object storage and static website hosting
+* Bucket policies and public access configuration
+* boto3 integration for AWS resource management
+* Intelligent deployment strategies using checksum comparison
+* Data integrity verification using MD5 and SHA256 hashing
+* Backup and disaster recovery strategies
+* Cloud synchronization algorithms and diff calculation
+* Metadata management and retention policies
+* Error handling, retry logic, and resilient automation patterns
+* Pagination handling for large-scale S3 operations
+* Logging, statistics tracking, and operational visibility
+
+[Full Project Documentation →](AWS-Portfolio-Hosting-Backup-Automation/)
+
 
