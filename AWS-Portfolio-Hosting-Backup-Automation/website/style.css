@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+nav {
+    background: #222;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+.project {
+    border-left: 4px solid #007bff;
+    padding-left: 15px;
+    margin: 20px 0;
+}
+
+h3 {
+    margin-top: 25px;
+    color: #007bff;
+}
+
+nav h2 {
+    color: white;
+    margin: 0;
+    font-weight: bold;
+}
